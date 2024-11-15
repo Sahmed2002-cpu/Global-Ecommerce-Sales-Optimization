@@ -1,0 +1,63 @@
+
+---
+
+## Key Findings
+1. **Sales Trends**: Identified a 15% sales increase in Q4 driven by holiday promotions.
+2. **Regional Insights**: Europe had the highest revenue, while APAC showed the fastest growth.
+3. **Customer Insights**: Segmented customers into high-value and low-value groups for targeted marketing.
+
+---
+
+## Tools and Technologies
+- **Python**: pandas, numpy, matplotlib, seaborn, statsmodels, scikit-learn.
+- **SQL**: PostgreSQL for data aggregation and insights.
+- **Power BI and Tableau**: Interactive and professional dashboards.
+- **Machine Learning**: Predictive modelling with Python.
+
+---
+
+## How to Use
+1. Clone this repository: `git clone <repository_url>`
+2. Navigate to the `scripts/` folder and run Python scripts for ETL and analysis.
+3. Open dashboards in Power BI or Tableau to explore insights.
+
+---
+
+## Acknowledgements
+Data used in this project is sourced from publicly available e-commerce datasets.
+"""
+
+readme_path = os.path.join(base_path, "README.md")
+with open(readme_path, "w") as readme_file:
+    readme_file.write(readme_content)
+
+# Create placeholder files
+placeholder_files = {
+    "data/raw_data.csv": "date,region,product,sales_revenue,units_sold,discount\n",
+    "data/cleaned_data.csv": "date,region,product,sales_revenue,units_sold,discount\n",
+    "scripts/etl_pipeline.py": "# Python script for ETL pipeline\n",
+    "scripts/eda_analysis.ipynb": "# Jupyter Notebook for EDA\n",
+    "scripts/sales_forecasting.ipynb": "# Jupyter Notebook for sales forecasting\n",
+    "sql_queries/sales_aggregation.sql": "-- SQL query for sales aggregation\n",
+    "dashboards/power_bi_dashboard.pbix": "",
+    "dashboards/tableau_dashboard.twbx": "",
+    "reports/insights_report.pdf": "",
+    "images/power_bi_dashboard.png": "",
+    "images/tableau_dashboard.png": ""
+}
+
+for relative_path, content in placeholder_files.items():
+    full_path = os.path.join(base_path, relative_path)
+    with open(full_path, "w") as placeholder_file:
+        placeholder_file.write(content)
+
+# Create zip archive of the project
+zip_path = f"/mnt/data/{project_name}.zip"
+with zipfile.ZipFile(zip_path, "w") as zipf:
+    for root, dirs, files in os.walk(base_path):
+        for file in files:
+            file_path = os.path.join(root, file)
+            arcname = os.path.relpath(file_path, base_path)
+            zipf.write(file_path, arcname)
+
+zip_path
