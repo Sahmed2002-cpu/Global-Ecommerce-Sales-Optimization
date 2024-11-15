@@ -1,0 +1,39 @@
+import os
+import zipfile
+
+# Redefine project structure after reset
+project_name = "Global-Ecommerce-Sales-Optimization"
+base_path = f"/mnt/data/{project_name}"
+
+# Directories to create
+directories = [
+    "data",
+    "scripts",
+    "sql_queries",
+    "dashboards",
+    "reports",
+    "images"
+]
+
+# Create base folder and subdirectories
+os.makedirs(base_path, exist_ok=True)
+for dir_name in directories:
+    os.makedirs(os.path.join(base_path, dir_name), exist_ok=True)
+
+# Create README.md
+readme_content = """# Global E-Commerce Sales Optimization
+
+## Project Overview
+This project focuses on analysing and optimising global e-commerce sales data. It demonstrates expertise in data engineering, advanced analytics, and visualisation tools like Power BI, Tableau, and Python.
+
+---
+
+## Skills Highlighted
+- **ETL Pipelines**: Automated using Python (pandas, numpy) and cloud tools (Azure Data Factory).
+- **Database Design**: Relational database with SQL queries for aggregation and insights.
+- **Visualisation**: Interactive dashboards in Power BI and Tableau.
+- **Machine Learning**: Predictive analytics and customer segmentation using Python.
+
+---
+
+## Repository Structure
